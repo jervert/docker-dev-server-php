@@ -3,11 +3,11 @@ export function isClick(ev) {
 }
 
 export function isEnter(ev) {
-  return ev.keyCode === 'Enter';
+  return ev.code === 'Enter';
 }
 
 export function isSpace(ev) {
-  return ev.keyCode === 'Space';
+  return ev.code === 'Space';
 }
 
 export function isEnterOrSpace(ev) {

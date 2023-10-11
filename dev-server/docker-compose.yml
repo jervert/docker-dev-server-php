@@ -56,10 +56,11 @@ services:
     build:
       context: ./
       dockerfile: node-photon.DockerFile
-    working_dir: /home/node/app/src/node
+    working_dir: /home/node/app
     environment:
       - NODE_ENV=development
     volumes:
+      - ./package.json:/home/node/app/package.json
       - ../src/node:/home/node/app/src/node
       - ../src/scss:/home/node/app/src/scss
       - ../src/js:/home/node/app/src/js
