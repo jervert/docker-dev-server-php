@@ -29,7 +29,16 @@ $resultsQuery = require('../src/php/example-query.php');
         <?php
           $results = $resultsQuery();
           foreach ($results as &$item) {
-            echo '<article class="card card--content"><div class="card__content"><h3 class="card__content-title">' . $item->title . '</h3><p class="card__content-text">' . $item->content . '</p></div></article>';
+            echo '
+              <article class="card card--content card--expandable">
+                <div class="card__content">
+                  <h3 class="card__content-title">
+                    <span class="card__content-title-button">' . $item->title . '</span>
+                  </h3>
+                  <p class="card__content-text">' . $item->content . '</p>
+                </div>
+              </article>
+            ';
           }
         ?>
         <div>
@@ -46,5 +55,6 @@ $resultsQuery = require('../src/php/example-query.php');
         </div>
       </aside>
     </div>
+    <script src="/assets/main.js"></script>
   </body>
 </html>

@@ -1,4 +1,5 @@
 FROM archlinux:latest
+RUN pacman-key --init
 RUN pacman -Syu --noconfirm --needed php-fpm
 RUN sed -i 's,;daemonize = yes,daemonize = no,g' /etc/php/php-fpm.conf
 RUN sed -i 's,display_errors = Off,display_errors = On,g' /etc/php/php.ini

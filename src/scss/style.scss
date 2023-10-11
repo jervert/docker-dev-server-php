@@ -78,7 +78,6 @@ a {
 }
 
 .card {
-
   padding: measures.$baseline;
   background: var(--color-background-card);
   display: flex;
@@ -88,4 +87,14 @@ a {
 .card__image {
   width: measures.$baseline * 6;
   margin-right: measures.$baseline * 2;
+}
+
+.card__content-title-button {
+  cursor: pointer;
+}
+
+.card__content-text {
+  &[aria-hidden="true"] {
+    display: none;
+  }
 }
