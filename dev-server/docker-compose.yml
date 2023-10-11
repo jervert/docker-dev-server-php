@@ -1,0 +1,60 @@
+version: '3.9'
+name: dev-server-arch-linux
+volumes:
+  phpmyadmin_data:
+  mysql_data:
+  node-modules:
+services:
+  nginx:
+    build:
+      context: ./
+      dockerfile: nginx-arch.DockerFile
+      args:
+        - NGINX_PORT=80
+    volumes:
+      - ../www:/var/www/html
+      - ../src/images:/var/www/html/assets/images
+    ports:
+      - "80:80"
+  php-fpm:
+    build:
+      context: ./
+      dockerfile: php-fpm-arch.DockerFile
+    volumes:
+      - ../www:/var/www/html
+      - ../src/php:/var/www/src/php
+  mysql:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_USER: example_user
+      MYSQL_PASSWORD: secret
+      MYSQL_DATABASE: example-app
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ../data/mysql/:/docker-entrypoint-initdb.d
+  phpmyadmin:
+    image: phpmyadmin
+    restart: always
+    environment:
+      - PMA_HOST=mysql
+      - PMA_USER=root
+      - PMA_PASSWORD=secret
+      - UPLOAD_LIMIT=32M
+      - PMA_ABSOLUTE_URI=/pma/
+    volumes:
+      - phpmyadmin_data:/sessions
+  nodejs:
+    build:
+      context: ./
+      dockerfile: node-arch.DockerFile
+    working_dir: /home/node/app/src/node
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - ../src/node:/home/node/app/src/node
+      - ../src/scss:/home/node/app/src/scss
+      - node-modules:/home/node/app/src/node/node_modules
+      - ../www/assets:/home/node/app/www/assets
+    command: "npm start"

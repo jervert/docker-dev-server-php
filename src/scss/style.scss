@@ -1,0 +1,91 @@
+@use './variables/color';
+@use './variables/measures';
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+ul, ol, li {
+  list-style: none;
+}
+
+html {
+  font-size: 62.5%;
+  --color-text: #{color.$text-light};
+  --color-background-primary: #{color.$grey-light};
+  --color-background-secondary: #{color.$white};
+  --color-background-card: #{color.$grey-light};
+  --color-link: #{color.$link-light};
+  @media (prefers-color-scheme: dark) {
+    --color-text: #{color.$text-dark};
+    --color-background-primary: #{color.$grey-dark};
+    --color-background-secondary: #{color.$black};
+    --color-background-card: #{color.$grey-dark};
+    --color-link: #{color.$link-dark};
+  }
+  .card--secondary {
+    --color-background-card: #{color.$lime-light};
+    @media (prefers-color-scheme: dark) {
+      --color-background-card: #{color.$lime-dark};
+    }
+  }
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--color-text);
+  background-color: var(--color-background-primary);
+  padding: measures.$baseline;
+  font-family: sans-serif;
+  font-size: measures.$baseline * 2;
+}
+
+h1, h2, h3, h4, h5, h6, [role="heading"] {
+  font-family: serif;
+}
+
+a {
+  color: var(--color-link);
+}
+
+.page {
+  width: 96%;
+  max-width: measures.$baseline * 50;
+  padding: measures.$baseline;
+  background-color: var(--color-background-secondary);
+}
+
+
+.header {
+  margin-bottom: measures.$baseline * 2;
+}
+
+.header__title {
+  display: flex;
+  align-items: center;
+}
+
+.header__title-text {
+  font-size: measures.$baseline * 3;
+}
+
+.header__title-image {
+  width:  measures.$baseline * 8;
+  margin-right:  measures.$baseline * 2;
+}
+
+.card {
+
+  padding: measures.$baseline;
+  background: var(--color-background-card);
+  display: flex;
+  margin-top: measures.$baseline * 2;
+}
+
+.card__image {
+  width: measures.$baseline * 6;
+  margin-right: measures.$baseline * 2;
+}
