@@ -1,6 +1,3 @@
-<?php
-$resultsQuery = require('../src/php/example-query.php');
-?><!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -19,31 +16,25 @@ $resultsQuery = require('../src/php/example-query.php');
             class="header__title-image"
             alt=""
           >
-          <h1 class="header__title-text">Dev server</h1>
+          <h1 class="header__title-text">{$title}</h1>
         </div>
       </header>
 
       <main class="main-content">
         <h2 class="main-content__title">Mysql query result</h2>
         <div class="main-content__inner">
-        <?php
-          $results = $resultsQuery();
-          foreach ($results as &$item) {
-            echo '
-              <article class="card card--content card--expandable">
-                <div class="card__content">
-                  <h3 class="card__content-title">
-                    <span class="card__content-title-button">' . $item->title . '</span>
-                  </h3>
-                  <p class="card__content-text">' . $item->content . '</p>
-                </div>
-              </article>
-            ';
-          }
-        ?>
+          {foreach from=$results item=item}
+            <article class="card card--content card--expandable">
+              <div class="card__content">
+                <h3 class="card__content-title">
+                  <span class="card__content-title-button">{$item->title}</span>
+                </h3>
+                <p class="card__content-text">{$item->content}</p>
+              </div>
+            </article>
+          {/foreach}
         <div>
       </main>
-
       <aside class="card card--secondary">
         <img
           src="/assets/images/robot.png"
@@ -51,11 +42,10 @@ $resultsQuery = require('../src/php/example-query.php');
           class="card__image"
         >
         <div class="card__content">
-          <h2 class="card__content-title">Smarty</h2>
-          <p class="card__content-text"><a href="smarty-example.php">Smarty example</a></p>
+          <h2 class="card__content-title">Generic</h2>
+          <p class="card__content-text"><a href="index.php">Generic example</a></p>
         </div>
       </aside>
-
       <aside class="card card--secondary">
         <img
           src="/assets/images/robot.png"

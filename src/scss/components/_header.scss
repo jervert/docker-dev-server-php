@@ -1,0 +1,19 @@
+@use '../variables/measures';
+
+.header {
+  margin-bottom: measures.$baseline * 2;
+}
+
+.header__title {
+  display: flex;
+  align-items: center;
+}
+
+.header__title-text {
+  font-size: measures.$baseline * 3;
+}
+
+.header__title-image {
+  width:  measures.$baseline * 8;
+  margin-right:  measures.$baseline * 2;
+}

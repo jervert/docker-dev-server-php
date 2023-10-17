@@ -5,6 +5,8 @@ volumes:
   phpmyadmin_www:
   mysql_data:
   node-modules:
+  composer-vendor:
+  php-tmp:
 services:
   nginx:
     build:
@@ -27,6 +29,8 @@ services:
     volumes:
       - ../www:/var/www/html
       - ../src/php:/var/www/src/php
+      - composer-vendor:/var/www/src/php/vendor
+      - php-tmp:/var/www/tmp
   mysql:
     image: mysql
     restart: always
@@ -52,6 +56,13 @@ services:
       - phpmyadmin_data:/sessions
       - phpmyadmin_www:/var/www/html
       - phpmyadmin_www:/var/www/html/pma
+  composer:
+    build:
+      context: ./
+      dockerfile: composer-arch.DockerFile
+    volumes:
+      - ../:/app
+      - composer-vendor:/app/vendor
   nodejs:
     build:
       context: ./

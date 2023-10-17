@@ -58,43 +58,5 @@ a {
   background-color: var(--color-background-secondary);
 }
 
-
-.header {
-  margin-bottom: measures.$baseline * 2;
-}
-
-.header__title {
-  display: flex;
-  align-items: center;
-}
-
-.header__title-text {
-  font-size: measures.$baseline * 3;
-}
-
-.header__title-image {
-  width:  measures.$baseline * 8;
-  margin-right:  measures.$baseline * 2;
-}
-
-.card {
-  padding: measures.$baseline;
-  background: var(--color-background-card);
-  display: flex;
-  margin-top: measures.$baseline * 2;
-}
-
-.card__image {
-  width: measures.$baseline * 6;
-  margin-right: measures.$baseline * 2;
-}
-
-.card__content-title-button {
-  cursor: pointer;
-}
-
-.card__content-text {
-  &[aria-hidden="true"] {
-    display: none;
-  }
-}
+@import "components/card";
+@import "components/header";

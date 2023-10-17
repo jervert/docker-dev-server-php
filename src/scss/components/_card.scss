@@ -1,0 +1,44 @@
+@use '../variables/measures';
+
+.card {
+  padding: measures.$baseline;
+  background: var(--color-background-card);
+  display: flex;
+  margin-top: measures.$baseline * 2;
+}
+
+.card--secondary + .card--secondary {
+  margin-top: measures.$baseline;
+}
+
+.card__image {
+  width: measures.$baseline * 6;
+  margin-right: measures.$baseline * 2;
+}
+
+.card__content-title-button {
+  display: block;
+  &[tabindex="0"] {
+    cursor: pointer;
+    position: relative;
+    padding-left: measures.$baseline * 2;
+    &:after {
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+    &[aria-expanded="true"]:after {
+      content: "–";
+    }
+    &[aria-expanded="false"]:after {
+      content: "+";
+    }
+  }
+}
+
+.card__content-text {
+  margin-top: measures.$baseline;
+  &[aria-hidden="true"] {
+    display: none;
+  }
+}
