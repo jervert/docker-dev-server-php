@@ -75,6 +75,18 @@ $resultsQuery = require('../src/php/example-query.php');
           class="card__image"
         >
         <div class="card__content">
+          <h2 class="card__content-title">Twig</h2>
+          <p class="card__content-text"><a href="twig-example.php">Twig example</a></p>
+        </div>
+      </aside>
+
+      <aside class="card card--secondary">
+        <img
+          src="/assets/images/robot.png"
+          alt=""
+          class="card__image"
+        >
+        <div class="card__content">
           <h2 class="card__content-title">Server info</h2>
           <p class="card__content-text"><a href="info.php">PHP Info</a></p>
         </div>

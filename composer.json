@@ -1,6 +1,7 @@
 {
   "require": {
     "smarty/smarty": "~4.3.4",
-    "latte/latte": "v3.0.10"
+    "latte/latte": "v3.0.10",
+    "twig/twig": "v3.7.1"
   }
 }
